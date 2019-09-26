@@ -13,3 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+
+      - name: bundle install
+        run: bundle install --path .bundle
+
+      - name: carthage
+        run: bundle exec fastlane run carthage
+
+      - name: gym
+        run: bundle exec fastlane gym
