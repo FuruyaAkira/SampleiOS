@@ -13,7 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
+        
+      - name: Select Xcode version # Xcode 10.3 を使う
+        run: sudo xcode-select -s '/Applications/Xcode_10.3.app/Contents/Developer'
+    
+      - name: Show Xcode version
+        run: xcodebuild -version
+        
       - name: bundle install
         run: bundle install --path .bundle
 
@@ -21,4 +27,4 @@ jobs:
         run: bundle exec fastlane run carthage
 
       - name: gym
-        run: bundle exec fastlane gym skip_archive:true
+        run: bundle exec fastlane gym --skip_archive --skip_package_ipa
