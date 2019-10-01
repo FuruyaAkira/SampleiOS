@@ -19,15 +19,12 @@ jobs:
     
       - name: Show Xcode version
         run: xcodebuild -version
-    
-      - name: Build # シミュレーター向けにビルド
-        run: xcodebuild -sdk iphonesimulator -configuration Debug build 
+        
+      - name: bundle install
+        run: bundle install --path .bundle
 
-#       - name: bundle install
-#         run: bundle install --path .bundle
+      - name: carthage
+        run: bundle exec fastlane run carthage
 
-#       - name: carthage
-#         run: bundle exec fastlane run carthage
-
-#       - name: gym
-#         run: bundle exec fastlane gym skip_archive:true
+      - name: gym
+        run: bundle exec fastlane gym --skip_archive
