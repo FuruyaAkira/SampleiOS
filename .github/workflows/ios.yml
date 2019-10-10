@@ -28,5 +28,5 @@ jobs:
       - name: carthage
         run: bundle exec fastlane run carthage
 
-#      - name: gym
-#        run: bundle exec fastlane gym --skip_archive --skip_package_ipa
+      - name: gym
+        run: bundle exec fastlane gym --skip_archive --skip_package_ipa --skip_profile_detection
